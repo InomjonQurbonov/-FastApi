@@ -10,7 +10,7 @@ from auth.schemas import UserRead, UserCreate, UserUpdate
 from todo.routers import router
 
 app = FastAPI(
-    title="Trading App"
+    title="App Todo"
 )
 
 app.include_router(router, prefix="/api")

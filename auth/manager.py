@@ -1,5 +1,4 @@
 from typing import Optional
-
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas, FastAPIUsers
 from fastapi_users.authentication import (
@@ -7,6 +6,7 @@ from fastapi_users.authentication import (
     BearerTransport,
     JWTStrategy,
 )
+
 from auth.database import User, get_user_db
 
 SECRET = "SECRET"

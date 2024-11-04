@@ -14,11 +14,11 @@ class TaskStatus(enum.Enum):
     COMPLETED = "Completed"
     CANCELLED = "Cancelled"
 
-class Users(Base):
-    __tablename__ = "users"
+class User(Base):
+    __tablename__ = "user"
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)
-    username = Column(String, nullable=False)
+    username = Column(String, nullable=True)
     registered_at = Column(TIMESTAMP, default=datetime.utcnow)
     hashed_password: str = Column(String(length=1024), nullable=False)
     is_active: bool = Column(Boolean, default=True, nullable=False)
@@ -30,7 +30,7 @@ class Todo(Base):
     __tablename__ = "todos"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
     title = Column(String, index=True, nullable=False)
     description = Column(String, nullable=True)
     task_status = Column(Enum(TaskStatus),default=TaskStatus.PENDING, nullable=False)

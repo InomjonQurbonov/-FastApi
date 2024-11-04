@@ -5,6 +5,7 @@ from database import get_db
 
 router = APIRouter()
 
+
 @router.post("/todos/", response_model=schemas.TodoResponse)
 def create_todo(todo: schemas.TodoCreate, db: Session = Depends(get_db)):
     return crud.create_todo(db=db, todo=todo)
